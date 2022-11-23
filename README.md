@@ -6,7 +6,7 @@
 2. Выполнить запрос в БД:
 ``` sql
 CREATE TABLE student(
-id UUDI,
+id BINARY(16),
 name varchar(32),
 birthDate DATE,
 number varchar(32),
