@@ -1,7 +1,10 @@
 package rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.StudentDto;
 import rest.service.HtmlPageService;
@@ -26,10 +29,16 @@ public class Controller {
     @GetMapping(value = "/")
     public ModelAndView welcome() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("welcome"); // указываю какую страницу вернуть
+        modelAndView.setViewName("welcom"); // указываю какую страницу вернуть
         modelAndView.getModel().put("message", "ПРИВЕТ asdasdasdasdasd"); // иньекция значений на страницу
         return modelAndView;
     }
+
+    @PostMapping(value = "/login")
+    public ModelAndView login() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("login"); // указываю какую страницу вернуть
+        return modelAndView;
 
     /**
      * Пример метода который будет вызываться по URL: http://localhost:8080/select/{имя_таблицы_в_которой_хотите_посмотреть_данные}
@@ -51,6 +60,8 @@ public class Controller {
     public ModelAndView addStudent(StudentDto studentDto) {
         return htmlPageService.createStudent(studentDto);
     }
+
+
 
     @GetMapping(value = "/remove/{id}")
     public void removeStudent(@PathVariable(value = "id") UUID id, HttpServletResponse response, ModelAndView modelAndView) throws IOException {
