@@ -29,16 +29,19 @@ public class Controller {
     @GetMapping(value = "/")
     public ModelAndView welcome() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("welcom"); // указываю какую страницу вернуть
+        modelAndView.setViewName("welcome"); // указываю какую страницу вернуть
         modelAndView.getModel().put("message", "ПРИВЕТ asdasdasdasdasd"); // иньекция значений на страницу
         return modelAndView;
     }
 
-    @PostMapping(value = "/login")
+    @GetMapping(value = "/login")
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
+        modelAndView.clear();
         modelAndView.setViewName("login"); // указываю какую страницу вернуть
+//        modelAndView.getModel().put("message", "ПРИВЕТ asdasdasdasdasd"); // иньекция значений на страницу
         return modelAndView;
+    }
 
     /**
      * Пример метода который будет вызываться по URL: http://localhost:8080/select/{имя_таблицы_в_которой_хотите_посмотреть_данные}
@@ -56,7 +59,7 @@ public class Controller {
         return modelAndView;
     }
 
-    @PostMapping(value = "/add-student")
+    @PostMapping(value = "/add-user")
     public ModelAndView addStudent(StudentDto studentDto) {
         return htmlPageService.createStudent(studentDto);
     }
