@@ -13,5 +13,4 @@ public interface StudentRepository extends JpaRepository<Student, UUID> {
 
     @Query(value = "SELECT * FROM student", nativeQuery = true)
     List<Student> findAllStudents();
-
 }

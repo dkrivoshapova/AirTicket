@@ -4,7 +4,7 @@ spring:
     username: root # пользователь который указат у вас при создании БД
     password: 12345 # пароль который указат у вас при создании БД
     driver-class-name: com.mysql.cj.jdbc.Driver
-#    driver-class-name: org.postgresql.Driver
+    #    driver-class-name: org.postgresql.Driver
     initialization-mode: never
   thymeleaf:
     cache: false

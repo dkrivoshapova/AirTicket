@@ -3,7 +3,6 @@ package rest.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.StudentDto;
-import rest.dto.UserDto;
 
 import java.util.UUID;
 
@@ -23,10 +22,6 @@ public class HtmlPageService {
     public ModelAndView createStudent(StudentDto studentDto) {
         return studentService.createStudent(studentDto);
     }
-    public ModelAndView loginUser(UserDto userDto) {
-        return studentService.loginUser(userDto);
-    }
-
 
     public void removeStudent(UUID id) {
         studentService.removeStudentById(id);

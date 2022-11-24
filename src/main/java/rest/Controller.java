@@ -1,10 +1,7 @@
 package rest;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.StudentDto;
 import rest.service.HtmlPageService;
@@ -30,19 +27,21 @@ public class Controller {
     public ModelAndView welcome() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.setViewName("welcome"); // указываю какую страницу вернуть
-        modelAndView.getModel().put("message", "ПРИВЕТ asdasdasdasdasd"); // иньекция значений на страницу
+        modelAndView.getModel().put("message", "добро пожаловать."); // иньекция значений на страницу
         return modelAndView;
     }
-
     @GetMapping(value = "/login")
     public ModelAndView login() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.clear();
         modelAndView.setViewName("login"); // указываю какую страницу вернуть
-//        modelAndView.getModel().put("message", "ПРИВЕТ asdasdasdasdasd"); // иньекция значений на страницу
         return modelAndView;
     }
-
+    @GetMapping(value = "/admin")
+    public ModelAndView admin() {
+        ModelAndView modelAndView = new ModelAndView();
+        modelAndView.setViewName("admin"); // указываю какую страницу вернуть
+        return modelAndView;
+    }
     /**
      * Пример метода который будет вызываться по URL: http://localhost:8080/select/{имя_таблицы_в_которой_хотите_посмотреть_данные}
      * метод возвращает html страницу, "resources/templates/show_table.html"
@@ -51,7 +50,6 @@ public class Controller {
     public ModelAndView showStudents() {
         return htmlPageService.createStudentPage();
     }
-
     @GetMapping(value = "/add-student")
     public ModelAndView newStudent() {
         ModelAndView modelAndView = new ModelAndView();
@@ -59,12 +57,10 @@ public class Controller {
         return modelAndView;
     }
 
-    @PostMapping(value = "/add-user")
+    @PostMapping(value = "/add-student")
     public ModelAndView addStudent(StudentDto studentDto) {
         return htmlPageService.createStudent(studentDto);
     }
-
-
 
     @GetMapping(value = "/remove/{id}")
     public void removeStudent(@PathVariable(value = "id") UUID id, HttpServletResponse response, ModelAndView modelAndView) throws IOException {

@@ -4,9 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.Email;
-
-//import javax.validation.*
+import java.time.LocalDate;
+import java.util.UUID;
 
 @Data
 @AllArgsConstructor
@@ -14,12 +13,8 @@ import javax.validation.constraints.Email;
 public class StudentDto {
 
     private String id;
-
     private String number;
-
-    @Email(message = "Email должен быть корректным адресом электронной почты")
     private String name;
-    
     private String birthDate;
 
 }

@@ -9,18 +9,28 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" th:href="@{/styles/main.css}"/>
+    <style>
+        body{
+            background: url(plane.jpg) no-repeat;
+            -moz-background-size: 100%;
+            -webkit-background-size: 100%;
+            -o-background-size: 100%;
+            background-size: 100%;
+        }
+    </style>
 </head>
 <body>
-
 <main role="main" class="container">
-
     <div class="starter-template">
-        <h1>Spring Boot Web Thymeleaf Example</h1>
+        <h1>Сервис продажи авиабилетов</h1>
         <h2>
-            <span th:text="'Hello, ' + ${message}"></span>
+            <span th:text="'Привет, ' + ${message}"></span>
         </h2>
 
-        <a href="/login"> войти в систему </a>
+        <a href="/all-students"> Приступить к работе </a>
+        <a class="btn btn-success" href="/login">Войти</a>
+
+
     </div>
 
 </main>
