@@ -25,7 +25,6 @@ public class StudentService {
         student.setNumber(studentDto.getNumber());
         student.setName(studentDto.getName());
         student.setBirthDate(studentDto.getBirthDate());
-        System.out.println(student);
         studentRepository.save(student);
         return getAllStudents();
     }

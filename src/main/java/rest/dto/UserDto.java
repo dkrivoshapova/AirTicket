@@ -15,7 +15,7 @@ public class UserDto {
 
     private String id;
 
-    @Email(message = "Email должен быть корректным адресом электронной почты")
+    @Email(message = "Email должен быть корректным адресом электронной почты", regexp = ".+[@].+[\\.].+")
     private String email;
 
     private String password;

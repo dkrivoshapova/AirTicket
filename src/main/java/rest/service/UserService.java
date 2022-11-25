@@ -22,6 +22,10 @@ public class UserService {
     }
 
     public ModelAndView login(UserDto userDto) {
+
+        System.out.println(userDto.getEmail());
+        System.out.println(userDto.getPassword());
+        if (userDto.getEmail().equals("") || userDto.getPassword().equals("")){return LoginExcepPage();}
         List<User> userInfo = userRepository.findAllUser();
         for (User user : userInfo) {
             if (userDto.getEmail().equals(user.getEmail())) {
@@ -30,7 +34,7 @@ public class UserService {
                 }
             }
         }
-        return returnLoginPage();
+        return LoginExcepPage();
     }
 
 
@@ -41,10 +45,11 @@ public class UserService {
         return modelAndView;
     }
 
-    private ModelAndView returnLoginPage() {
+    private ModelAndView LoginExcepPage() {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.clear();
-        modelAndView.setViewName("login");
+        modelAndView.setViewName("exception-login");
+        modelAndView.getModel().put("message", "неправильный логин или пароль"); // иньекция значений на страницу
         return modelAndView;
     }
 //    private ModelAndView createAndFillModel(List<StudentDto> studentDtos) {
