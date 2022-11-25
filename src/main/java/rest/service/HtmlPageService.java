@@ -11,11 +11,15 @@ import java.util.UUID;
 public class HtmlPageService {
 
     private final StudentService studentService;
+    private final UserService userService;
 
-    public HtmlPageService(StudentService studentService) {
+    public HtmlPageService(StudentService studentService, UserService userService) {
         this.studentService = studentService;
+        this.userService = userService;
     }
-
+    public ModelAndView registrartion(UserDto userDto) {
+        return userService.login(userDto);
+    }
     public ModelAndView createStudentPage() {
         return studentService.getAllStudents();
     }
@@ -23,10 +27,6 @@ public class HtmlPageService {
     public ModelAndView createStudent(StudentDto studentDto) {
         return studentService.createStudent(studentDto);
     }
-    public ModelAndView loginUser(UserDto userDto) {
-        return studentService.loginUser(userDto);
-    }
-
 
     public void removeStudent(UUID id) {
         studentService.removeStudentById(id);

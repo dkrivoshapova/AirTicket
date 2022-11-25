@@ -3,9 +3,7 @@ package rest.service;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.StudentDto;
-import rest.dto.UserDto;
 import rest.persistence.entity.Student;
-import rest.persistence.entity.User;
 import rest.persistence.repository.StudentRepository;
 
 import java.util.ArrayList;
@@ -29,14 +27,6 @@ public class StudentService {
         student.setBirthDate(studentDto.getBirthDate());
         System.out.println(student);
         studentRepository.save(student);
-        return getAllStudents();
-    }
-    public ModelAndView loginUser(UserDto userDto) {
-        User user = new User();
-        user.setId(UUID.randomUUID());
-        user.setEmail(userDto.getEmail());
-        user.setPassword(userDto.getPassword());
-
         return getAllStudents();
     }
 

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 import rest.dto.StudentDto;
+import rest.dto.UserDto;
 import rest.service.HtmlPageService;
 
 import javax.servlet.http.HttpServletResponse;
@@ -39,8 +40,11 @@ public class Controller {
         ModelAndView modelAndView = new ModelAndView();
         modelAndView.clear();
         modelAndView.setViewName("login"); // указываю какую страницу вернуть
-//        modelAndView.getModel().put("message", "ПРИВЕТ asdasdasdasdasd"); // иньекция значений на страницу
         return modelAndView;
+    }
+    @PostMapping(value = "/login")
+    public ModelAndView checkUser(UserDto userDto) {
+        return htmlPageService.registrartion(userDto);
     }
 
     /**
@@ -59,12 +63,10 @@ public class Controller {
         return modelAndView;
     }
 
-    @PostMapping(value = "/add-user")
+    @PostMapping(value = "/add-student")
     public ModelAndView addStudent(StudentDto studentDto) {
         return htmlPageService.createStudent(studentDto);
     }
-
-
 
     @GetMapping(value = "/remove/{id}")
     public void removeStudent(@PathVariable(value = "id") UUID id, HttpServletResponse response, ModelAndView modelAndView) throws IOException {

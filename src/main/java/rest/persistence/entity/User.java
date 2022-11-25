@@ -11,10 +11,10 @@ import java.util.UUID;
 @Entity
 @Getter
 @Setter
-@Table(name = "loginAndPasword")
+@Table(name = "userInfo")
 public class User {
     @Id
-    private UUID id;
+    private int id;
     private String email;
     private String password;
 }

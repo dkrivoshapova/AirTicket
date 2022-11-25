@@ -12,7 +12,7 @@
 <body>
 <main role="main" class="container">
   <h2>Войдите в систему</h2>
-<!--  <form action="/login" method="post" th:object="${userDto}">-->
+  <form action="/login" method="post" th:object="${userDto}">
     <div class="form-group">
       <input type="text" class="form-control" id="exampleNumber" name="number" placeholder="email">
     </div>
@@ -21,6 +21,7 @@
     </div>
     <div class="text-center">
       <button class="btn btn-success" type="submit">ADD</button>
+      <a href="/" class="btn btn-light" role="button">Back</a>
     </div>
 
   </form>
